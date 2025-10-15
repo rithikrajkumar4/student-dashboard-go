@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github/rithikrajkumar4/student-backend-go/internal/config"
+	"github/rithikrajkumar4/student-backend-go/internal/http/handlers/student"
 	"log"
 	"log/slog"
 	"net/http"
@@ -22,9 +23,7 @@ func main() {
 	// router setup
 	router := http.NewServeMux()
 
-	router.HandleFunc("GET /", func(res http.ResponseWriter, req *http.Request) {
-		res.Write([]byte("Welcome to Student API's"))
-	})
+	router.HandleFunc("POST /api/students", student.New())
 
 	// server setup
 	server := http.Server{
